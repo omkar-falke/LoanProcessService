@@ -5,6 +5,8 @@ import { HttpHeaders } from '@angular/common/http';
 import { Button } from 'protractor';
 import { NgModel } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material';
+import { Routes, Router } from '@angular/router';
+import { Observable,interval, Subscription } from 'rxjs';
 
 // const headerOption={
 //   headers: new HttpHeaders({'Content-Type':'application/json'})
@@ -34,10 +36,11 @@ noticesend3=3;
 
 allDatarow:LoanProces[];
   allDatacolume:Array<any>;
-  constructor(private ser:SharedService) { }
+  updateSubscription: Subscription;
+  constructor(private ser:SharedService,private router:Router) {
+   
+  }
   dis(id){
-    console.log('innn');
-    console.log(id);
       if(id===this.idd || id>0&&this.idd<=3)
       { 
         return true;
@@ -46,8 +49,6 @@ allDatarow:LoanProces[];
   }
 
   dis1(id){
-    console.log('innn');
-    console.log(id);
       if(id===this.noticesend||id>1&&this.noticesend<=3)
       { 
         return true;
@@ -56,8 +57,6 @@ allDatarow:LoanProces[];
   }
 
   dis2(id){
-    console.log('innn');
-    console.log(id);
       if(id===this.noticesend3&&id>2&&this.noticesend3<=3)
       { 
         return true;
@@ -66,8 +65,23 @@ allDatarow:LoanProces[];
   }
 
   ngOnInit() {
+    console.log('11');
+    
    this.getalldata();
+   
+   this.updateSubscription = interval(1000).subscribe(
+    (val) => { this.updateStats()
   }
+);
+
+
+  
+}
+updateStats() {
+  throw new Error("Method not implemented.");
+}
+
+  
 
 
   createAndUpdate(currentLoan:LoanProces ) {
@@ -82,9 +96,12 @@ this.idd=currentLoan.legalId;
       this.ser.sendNotice(currentLoan).subscribe( 
         (data) =>{
           console.log(data);
-          this.getalldata
-     console.log(this.getalldata);
+
+     this.router.navigateByUrl("layout/legalhead/legalheaddashnotice");
+console.log('okkk');
+
       }) 
+
   }
   getalldata() {
  this.ser.getalldata().subscribe(

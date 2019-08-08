@@ -6,13 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./legalheadsendnotice.component.scss']
 })
 export class LegalheadsendnoticeComponent implements OnInit {
+  
 
   constructor() { }
 
   ngOnInit() {
 
-
-    
-  }
-
 }
+};
