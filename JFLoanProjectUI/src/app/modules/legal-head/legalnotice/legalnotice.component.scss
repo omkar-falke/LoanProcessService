@@ -1,0 +1,23 @@
+.btn btn-danger {
+    padding: 10px 10px;
+    font-size: 7px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 6px;
+    box-shadow: 0 2px #999;
+  }
+  
+  .btn btn-danger:hover {background-color: #3e8e41}
+  
+  .btn btn-danger:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+  table {
+    width: 100%;
+  }
