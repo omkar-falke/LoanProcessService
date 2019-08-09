@@ -9,6 +9,8 @@ import { SharedService } from 'app/shared/shared.service';
 import { LegalheadsendnoticeComponent } from './legalheadsendnotice/legalheadsendnotice.component';
 import { MatRadioModule } from '@angular/material/radio';
 import {MatTableModule} from '@angular/material/table';
+import { NgxSpinnerModule } from "ngx-spinner";
+
 const legalheadrouting:Routes=[{path:'legalheaddashboard',component:LegalHeaddashboardComponent},
 {path:'legalheaddashnotice',component:LegalnoticeComponent},
 {path:'legalheadsentnotice',component:LegalheadsendnoticeComponent}
@@ -22,6 +24,7 @@ const legalheadrouting:Routes=[{path:'legalheaddashboard',component:LegalHeaddas
   providers:[SharedService],
   imports: [
     RouterModule.forChild(legalheadrouting),
+    NgxSpinnerModule, 
 
 CommonModule,HttpClientModule, FormsModule, MatRadioModule,MatTableModule
   ]

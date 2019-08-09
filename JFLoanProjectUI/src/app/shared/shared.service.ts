@@ -13,9 +13,9 @@ export class SharedService {
   save(currentLoanProcess:LoanProces ) {
     this.http.post(this.mockurl,currentLoanProcess).subscribe(()=>{})
   }
-  mockurl="http://desktop-qdm92as:8083/sendnoticedata";
+  mockurl="http://localhost:8083/sendnoticedata";
   getalldata():Observable<LoanProces[]> {
-return this.http.get<LoanProces[]>("http://desktop-qdm92as:8083/getdata");
+return this.http.get<LoanProces[]>("http://localhost:8083/getdata");
   }
    
   
@@ -37,5 +37,13 @@ return this.http.get<LoanProces[]>("http://desktop-qdm92as:8083/getdata");
   {    
     return this.http.put<LoanProces>(this.mockurl + '/' + currentLoanProcess.legalId,currentLoanProcess);
   }
+
+
+  takelegalaction(currentLoanProcess:LoanProces):Observable<LoanProces>
+  {    
+    return this.http.put<LoanProces>('http://localhost:8083/filecase/' + currentLoanProcess.legalId,currentLoanProcess);
+  }
+
+
 }
 

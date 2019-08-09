@@ -21,6 +21,8 @@
           <th>1 NOTICE</th>
           <th>2 NOTICE </th>
           <th>3 NOTICE </th>
+          <th> TAKE LEGAL ACTION </th>
+
         </tr>
       </thead>
       <tbody *ngFor="let dr of allDatarow">
@@ -31,14 +33,27 @@
         <td width=20px>{{dr.emiPaidDate}}</td>
         <td>{{dr.loanAmount}}</td>
         <td>{{dr.count_Bucket}}</td>
-        <td><button class="btn btn-danger" id="dr.legalId" #legalId (click)="createAndUpdate(dr)" [disabled]="dis(dr.firstNoticeSend)">Send</button></td>
-        <td><button class="btn btn-danger"  id="dr.legalId" #legalId (click)="createAndUpdate(dr)" [disabled]="dis1(dr.firstNoticeSend)">Send</button></td>
-        <td><button class="btn btn-danger"   id="dr.legalId" #legalId (click)="createAndUpdate(dr)" [disabled]="dis2(dr.firstNoticeSend)">Send</button></td>
+        <td><button class="btn btn-danger" id="dr.legalId" #legalId (click)="createAndUpdate(dr,false)" [disabled]=" dr.firstNoticeSend !== 0  || disableAllButtons">Send</button></td>
+        <td><button class="btn btn-danger"  id="dr.legalId" #legalId (click)="createAndUpdate(dr,false)" [disabled]="dr.firstNoticeSend !== 1 || disableAllButtons">Send</button></td>
+        <td><button class="btn btn-danger"   id="dr.legalId" #legalId (click)="createAndUpdate(dr,false)" [disabled]="dr.firstNoticeSend !== 2 || disableAllButtons">Send</button></td>
+        <td><button class="btn btn-danger"   id="dr.legalId" #legalId (click)="createAndUpdate(dr,true)" [disabled]="dr.firstNoticeSend !== 3 || disableAllButtons">Send</button></td>
+
         </tr>
       </tbody>
     </table>
   </div>
   </form>
+  <ngx-spinner
+bdOpacity = 0.8
+bdColor = ""
+size = "large"
+color = "#ec1859"
+type = "ball-spin-clockwise"
+[fullScreen] = "false"
+>
+<p style="color: rgb(107, 47, 47)" > Sending Email </p>
+</ngx-spinner>
+
 </body>  
 </html>
 
